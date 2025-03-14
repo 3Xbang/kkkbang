@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>跳转中...</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #3498db;
+    }
+    .loader {
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #3498db;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader"></div>
+  <h2>正在跳转至客户服务中心...</h2>
+  <p>如果页面没有自动跳转，请 <a href="/client-service" id="redirect-link">点击这里</a></p>
+
+  <script>
+    // 保存登录状态
+    localStorage.setItem('isLoggedIn', 'true');
+    
+    // 设置测试用户信息
+    const userInfo = {
+      name: '测试用户',
+      email: 'test@example.com',
+      role: 'client',
+      avatar: null
+    };
+    
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    
+    // 3秒后自动跳转
+    setTimeout(() => {
+      window.location.href = '/client-service';
+    }, 2000);
+  </script>
+</body>
+</html> 
